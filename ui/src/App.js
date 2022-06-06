@@ -1,8 +1,14 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomeScreen from "./screens/HomeScreen";
+import LoginScreen from "./screens/LoginScreen";
+import ProfileScreen from "./screens/ProfileScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 import ProductScreen from "./screens/ProductScreen";
+import ShippingScreen from "./screens/ShippingScreen";
 import CartScreen from "./screens/CartScreen";
+import PaymentScreen from "./screens/PaymentScreen";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -13,10 +19,16 @@ function App() {
       <main className="py-3">
         <Container>
           <Routes>
-            <Route exat path="/" element={<HomeScreen />}></Route>
+            <Route path="/shipping" element={<ShippingScreen />}></Route>
+            <Route path="/payment" element={<PaymentScreen />}></Route>
+            <Route path="/placeorder" element={<PlaceOrderScreen />}></Route>
+            <Route path="/login" element={<LoginScreen />}></Route>
+            <Route path="/register" element={<RegisterScreen />}></Route>
+            <Route path="/profile" element={<ProfileScreen />}></Route>
             <Route path="/product/:id" element={<ProductScreen />}></Route>
-            <Route exat path="/cart" element={<CartScreen />}></Route>
-            <Route exat path="/cart/:id" element={<CartScreen />}></Route>
+            <Route path="/cart" element={<CartScreen />}></Route>
+            <Route path="/cart/:id" element={<CartScreen />}></Route>
+            <Route exat path="/" element={<HomeScreen />}></Route>
           </Routes>
         </Container>
       </main>

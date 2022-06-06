@@ -27,14 +27,14 @@ const CartScreen = () => {
     if (productId) {
       dispatch(addToCart(productId, qty));
     }
-  }, [dispatch]);
+  }, [dispatch, productId, qty]);
 
   const removeFromCarHandler = (id) => {
     dispatch(removeFromCart(id));
   };
   const navigate = useNavigate();
   const checkoutHandler = () => {
-    navigate(`/login?redirect=shipping`);
+    navigate(`/login?redirect=/shipping`);
   };
   return (
     <Row>
