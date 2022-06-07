@@ -19,22 +19,21 @@ const PlaceOrderScreen = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  let cart = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.cart);
 
   const addDecimal = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2);
   };
-  // Calculate prices
+  //Calculate prices
   cart.itemsPrice = addDecimal(
     cart.cartItems.reduce((prev, item) => item.price * item.qty + prev, 0)
   );
   cart.shippingPrice = addDecimal(cart.itemsPrice > 100 ? 10 : 35);
   cart.taxPrice = addDecimal(Number((0.15 * cart.itemsPrice).toFixed(2)));
 
-  cart.totalPrice =
-    Number(cart.itemsPrice) +
-    Number(cart.shippingPrice) +
-    Number(cart.taxPrice);
+  cart.totalPrice = addDecimal(
+    Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)
+  );
 
   const orderCreate = useSelector((state) => state.orderCreate);
   const { user, success, error } = orderCreate;
@@ -45,18 +44,18 @@ const PlaceOrderScreen = () => {
     }
   }, [navigate, success]);
 
+  const order = {
+    orderItems: cart.cartItems,
+    shippingAddress: cart.shippingAddress,
+    paymentMethod: cart.paymentMethod,
+    itemsPrice: cart.itemsPrice,
+    shippingPrice: cart.shippingPrice,
+    taxPrice: cart.taxPrice,
+    totalPrice: cart.totalPrice,
+  };
+
   const placeOrderHandler = () => {
-    dispatch(
-      createOrder({
-        orderItems: cart.cartItems,
-        shippingAddress: cart.shippingAddress,
-        paymentMethod: cart.paymentMethod,
-        itemsPrice: cart.itemsPrice,
-        shippingPrice: cart.shippingPrice,
-        taxPrice: cart.taxPrice,
-        totalPrice: cart.totalPrice,
-      })
-    );
+    dispatch(createOrder(order));
   };
   return (
     <>

@@ -1,16 +1,33 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import {
+  configureStore,
+  combineReducers,
+  applyMiddleware,
+  compose,
+} from "@reduxjs/toolkit";
+import ThunkMiddleware from "redux-thunk";
 import {
   productListReducer,
   productDetailsReducer,
 } from "./reducers/productReducers";
 import cartReducer from "./reducers/cartReducers";
-import { orderCreateReducer } from "./reducers/orderReducer";
+import {
+  orderCreateReducer,
+  orderDetailsReducer,
+  orderPayReducer,
+} from "./reducers/orderReducer";
 import {
   userLoginReducer,
   userRegisterReducer,
   userDetailsReducer,
   userUpdateProfileReducer,
 } from "./reducers/userReducer";
+
+const middleware =
+  process.env.NODE_ENV !== "production"
+    ? [require("redux-immutable-state-invariant").default(), ThunkMiddleware]
+    : [ThunkMiddleware];
+const middlewareEnhancer = applyMiddleware(middleware);
+const composedEnhancers = compose(middlewareEnhancer);
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
@@ -40,6 +57,12 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
   orderCreate: orderCreateReducer,
+  orderDetails: orderDetailsReducer,
+  orderPay: orderPayReducer,
 });
-const store = configureStore({ reducer, preloadedState });
+const store = configureStore({
+  reducer,
+  preloadedState,
+  composedEnhancers,
+});
 export default store;

@@ -6,6 +6,7 @@ import ProfileScreen from "./screens/ProfileScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ProductScreen from "./screens/ProductScreen";
 import ShippingScreen from "./screens/ShippingScreen";
+import OrderScreen from "./screens/OrderScreen";
 import CartScreen from "./screens/CartScreen";
 import PaymentScreen from "./screens/PaymentScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
@@ -19,6 +20,7 @@ function App() {
       <main className="py-3">
         <Container>
           <Routes>
+            <Route path="/order/:id" element={<OrderScreen />}></Route>
             <Route path="/shipping" element={<ShippingScreen />}></Route>
             <Route path="/payment" element={<PaymentScreen />}></Route>
             <Route path="/placeorder" element={<PlaceOrderScreen />}></Route>

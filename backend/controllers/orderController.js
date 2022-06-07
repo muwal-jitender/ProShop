@@ -5,7 +5,6 @@ import asyncHandler from "express-async-handler";
 // @route POST /api/orders
 // @access Private
 const addOrderItems = asyncHandler(async (req, res) => {
-  console.log(`req.body ${JSON.stringify(req.body)}`);
   const {
     orderItems,
     shippingAddress,
@@ -35,4 +34,43 @@ const addOrderItems = asyncHandler(async (req, res) => {
   res.status(201).json(createdOrder);
 });
 
-export { addOrderItems };
+// @desc Get order by ID
+// @route GET /api/orders/:id
+// @access Private
+const getOrderById = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id).populate(
+    "user",
+    "name email"
+  );
+  if (order) {
+    res.json(order);
+  } else {
+    res.status(404);
+    throw new Error("Order not found");
+  }
+});
+
+// @desc Update order to paid
+// @route GET /api/orders/:id/pay
+// @access Private
+const updateOrderToPaid = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id);
+  const modal = req.body;
+  if (order) {
+    order.isPaid = true;
+    (order.paidAt = Date.now()),
+      (order.paymentResult = {
+        id: modal.id,
+        status: modal.status,
+        update_time: modal.update_time,
+        email_address: modal.email_address,
+      });
+    const updatedOrder = await order.save();
+    res.json(updatedOrder);
+  } else {
+    res.status(404);
+    throw new Error("Order not found");
+  }
+});
+
+export { addOrderItems, getOrderById, updateOrderToPaid };
