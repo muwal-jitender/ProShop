@@ -39,7 +39,7 @@ Open [http://localhost:5000](http://localhost:5000) to view it in your browser o
 
 ### `npm run dev`
 
-Runs both Client (React) and Server (Node Express)concurrently with a single command.
+Runs both Client (React) and Server (Node Express) concurrently with a single command.
 
 ### `npm run eject`
 
@@ -57,8 +57,8 @@ You can use the following commands to seed the database with some sample users a
 
 ```
 # Import data
-npm run data:import
+yarn run data:import
 
 # Destroy data
-npm run data:destroy
+yarn run data:destroy
 ```
