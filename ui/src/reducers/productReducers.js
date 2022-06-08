@@ -5,6 +5,17 @@ import {
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
   PRODUCT_DETAILS_REQUEST,
+  PRODUCT_DELETE_REQUEST,
+  PRODUCT_DELETE_SUCCESS,
+  PRODUCT_DELETE_FAIL,
+  PRODUCT_CREATE_REQUEST,
+  PRODUCT_CREATE_SUCCESS,
+  PRODUCT_CREATE_FAIL,
+  PRODUCT_CREATE_RESET,
+  PRODUCT_UDPATE_REQUEST,
+  PRODUCT_UDPATE_SUCCESS,
+  PRODUCT_UDPATE_FAIL,
+  PRODUCT_UDPATE_RESET,
 } from "../constants/productConstants";
 
 const productListReducer = (state = { products: [] }, action) => {
@@ -36,4 +47,53 @@ const productDetailsReducer = (
   }
 };
 
-export { productListReducer, productDetailsReducer };
+const productDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case PRODUCT_DELETE_REQUEST:
+      return { loading: true };
+    case PRODUCT_DELETE_SUCCESS:
+      return { loading: false, success: true };
+    case PRODUCT_DELETE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+const productCreateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case PRODUCT_CREATE_REQUEST:
+      return { loading: true };
+    case PRODUCT_CREATE_SUCCESS:
+      return { loading: false, success: true, product: action.payload };
+    case PRODUCT_CREATE_FAIL:
+      return { loading: false, error: action.payload };
+    case PRODUCT_CREATE_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+const productUpdateReducer = (state = { product: {} }, action) => {
+  switch (action.type) {
+    case PRODUCT_UDPATE_REQUEST:
+      return { loading: true };
+    case PRODUCT_UDPATE_SUCCESS:
+      return { loading: false, success: true, product: action.payload };
+    case PRODUCT_UDPATE_FAIL:
+      return { loading: false, error: action.payload };
+    case PRODUCT_UDPATE_RESET:
+      return { product: {} };
+    default:
+      return state;
+  }
+};
+
+export {
+  productListReducer,
+  productDetailsReducer,
+  productDeleteReducer,
+  productCreateReducer,
+  productUpdateReducer,
+};

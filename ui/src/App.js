@@ -11,6 +11,9 @@ import CartScreen from "./screens/CartScreen";
 import PaymentScreen from "./screens/PaymentScreen";
 import UserListScreen from "./screens/Admin/UserListScreen";
 import UserEditScreen from "./screens/Admin/UserEditScreen";
+import ProductListScreen from "./screens/Admin/ProductListScreen";
+import ProductEditScreen from "./screens/Admin/ProductEditScreen";
+import OrderListScreen from "./screens/Admin/OrderListScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -33,6 +36,18 @@ function App() {
             <Route path="/cart" element={<CartScreen />}></Route>
             <Route path="/cart/:id" element={<CartScreen />}></Route>
             <Route path="/admin/userlist" element={<UserListScreen />}></Route>
+            <Route
+              path="/admin/productlist"
+              element={<ProductListScreen />}
+            ></Route>
+            <Route
+              path="/admin/orderlist"
+              element={<OrderListScreen />}
+            ></Route>
+            <Route
+              path="/admin/product/:id/edit"
+              element={<ProductEditScreen />}
+            ></Route>
             <Route
               path="/admin/user/:id/edit"
               element={<UserEditScreen />}
