@@ -1,13 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  Button,
-  Row,
-  Col,
-  ListGroup,
-  Image,
-  Card,
-  ListGroupItem,
-} from "react-bootstrap";
+import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import CheckoutSteps from "../components/CheckoutSteps";
@@ -42,7 +34,7 @@ const PlaceOrderScreen = () => {
     if (success) {
       navigate(`/order/${user._id}`);
     }
-  }, [navigate, success]);
+  }, [navigate, success, user]);
 
   const order = {
     orderItems: cart.cartItems,
