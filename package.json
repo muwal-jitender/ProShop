@@ -5,13 +5,14 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
+    "build": "webpack",
     "start": "node backend/server",
     "server": "nodemon backend/server",
     "client": "npm start --prefix ui",
     "dev": "concurrently \"yarn run server\" \"npm run client\"",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn add --prefix ui && yarn run build --prefix ui"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn install --prefix ui && npm run build --prefix ui"
   },
   "repository": {
     "type": "git",
