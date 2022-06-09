@@ -21,6 +21,7 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
+    "redux-immutable-state-invariant": "^2.1.0",
     "redux-thunk": "^2.4.1",
     "web-vitals": "^2.1.4"
   },
@@ -48,7 +49,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "redux-immutable-state-invariant": "^2.1.0"
-  }
+  "devDependencies": {}
 }
