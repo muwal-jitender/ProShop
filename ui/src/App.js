@@ -37,7 +37,13 @@ function App() {
             <Route path="/cart/:id" element={<CartScreen />}></Route>
             <Route path="/admin/userlist" element={<UserListScreen />}></Route>
             <Route
+              exact
               path="/admin/productlist"
+              element={<ProductListScreen />}
+            ></Route>
+            <Route
+              exact
+              path="/admin/productlist/:pageNumber"
               element={<ProductListScreen />}
             ></Route>
             <Route
@@ -53,11 +59,21 @@ function App() {
               element={<UserEditScreen />}
             ></Route>
             <Route
-              exat
+              exact
               path="/search/:keyword"
               element={<HomeScreen />}
             ></Route>
-            <Route exat path="/" element={<HomeScreen />}></Route>
+            <Route
+              exact
+              path="/page/:pageNumber"
+              element={<HomeScreen />}
+            ></Route>
+            <Route
+              exact
+              path="/search/:keyword/page/:pageNumber"
+              element={<HomeScreen />}
+            ></Route>
+            <Route exact path="/" element={<HomeScreen />}></Route>
           </Routes>
         </Container>
       </main>
