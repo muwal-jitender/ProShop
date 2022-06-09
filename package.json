@@ -11,7 +11,7 @@
     "dev": "concurrently \"yarn run server\" \"yarn run client\"",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn install --prefix ui && npm run build --prefix ui"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --only=dev && npm install && npm run build"
   },
   "repository": {
     "type": "git",
