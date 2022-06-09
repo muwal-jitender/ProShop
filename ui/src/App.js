@@ -52,6 +52,11 @@ function App() {
               path="/admin/user/:id/edit"
               element={<UserEditScreen />}
             ></Route>
+            <Route
+              exat
+              path="/search/:keyword"
+              element={<HomeScreen />}
+            ></Route>
             <Route exat path="/" element={<HomeScreen />}></Route>
           </Routes>
         </Container>
