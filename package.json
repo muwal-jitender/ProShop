@@ -10,7 +10,8 @@
     "client": "npm start --prefix ui",
     "dev": "concurrently \"yarn run server\" \"npm run client\"",
     "data:import": "node backend/seeder",
-    "data:destroy": "node backend/seeder -d"
+    "data:destroy": "node backend/seeder -d",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn add --prefix ui && yarn run build --prefix ui"
   },
   "repository": {
     "type": "git",
