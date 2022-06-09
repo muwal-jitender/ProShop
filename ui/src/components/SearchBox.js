@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { Row, Col } from "react-bootstrap";
 
 const SearchBox = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const SearchBox = () => {
   };
 
   return (
-    <Form inline>
+    <Form inline style={{ display: "flex" }}>
       <Form.Control
         type="text"
         name="q"

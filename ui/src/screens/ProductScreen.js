@@ -20,6 +20,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useNavigate } from "react-router";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
+import Meta from "../components/Meta";
 
 const ProductScreen = () => {
   const [qty, setQty] = useState(1);
@@ -79,6 +80,7 @@ const ProductScreen = () => {
         <Message variant="danger" childern={error}></Message>
       ) : (
         <>
+          <Meta title={product.name}></Meta>
           <Row>
             <Col md={6}>
               {/* Image is going out of its container and to stop this use fluid */}

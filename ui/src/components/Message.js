@@ -3,11 +3,7 @@ import { Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Message = ({ variant, childern }) => {
-  return (
-    <Alert variant={variant}>
-      {childern} <Link to="/">Home</Link>
-    </Alert>
-  );
+  return <Alert variant={variant}>{childern}</Alert>;
 };
 Message.defaultProps = {
   variant: "info",
